@@ -42,7 +42,7 @@ The platform includes an extensible, typed business configuration layer (`src/da
 
 ### How to Add More Businesses
 
-Adding a new business requires zero UI changes. Simply append a new profile to `businesses` in [`src/data/sellerData.ts`](file:///Users/ratnesh/Documents/Projects/vapi-snapdeal-assessment/src/data/sellerData.ts):
+Adding a new business requires zero UI changes. Simply append a new profile to `businesses` in [`src/data/sellerData.ts`](vapi-snapdeal-assessment/src/data/sellerData.ts):
 
 ```typescript
 {
@@ -167,28 +167,6 @@ flowchart TD
 
 ---
 
-## 6. Recommended 1–2 Minute Demo Video Script
-
-For your assessment recording submission, follow this natural conversation flow:
-
-1. **Select Store:** Choose **Rajesh Electronics** in the top store switcher.
-2. **Start Call:** Click the red microphone button and allow microphone access.
-3. **Greeting:** Listen to the KAM's opening greeting:
-   > *"Hello! I'm your Snapdeal Key Account Manager. I've pulled up the monthly business analytics for Rajesh Electronics. How can I assist you with your store today?"*
-4. **Seller Query:** Say:
-   > *"Hi, my sales have dropped significantly this month and I don't understand why. Can you help me?"*
-5. **Investigation:** When the KAM asks about your inventory or stockouts, say:
-   > *"Actually yes, I had supply issues and didn't realize so many items went out of stock."*
-6. **Diagnosis:** Listen to the KAM explain that pricing is stable (ASP flat at ₹500), but 18 items are OOS (+260%) and cancellations spiked to 14%.
-7. **Action Items:** Ask:
-   > *"What practical steps should I take to fix this?"*
-8. **Summary:** Ask:
-   > *"Can you give me a quick summary of our action plan?"*
-9. **Checklist:** Check off the action items in the right-hand panel as you agree to them!
-10. **End Call:** Click **End Call** to wrap up the session.
-
----
-
 ## 7. Project Structure
 
 ```
@@ -224,15 +202,3 @@ vapi-snapdeal-assessment/
 ├── SUBMISSION_NOTE.md                  # 1-Page technical write-up for assignment submission
 └── README.md                           # Documentation & user guide
 ```
-
----
-
-## 8. Evaluation Rubric Alignment
-
-| Rubric Parameter | Weight | Implementation Details |
-| :--- | :---: | :--- |
-| **Voice interaction and natural conversation** | **30%** | WebRTC two-way voice with Vapi SDK, sub-second latency, speech barge-in/interruption support, and volume waveform telemetry. |
-| **Understanding seller queries** | **20%** | Active listening, 1-question-at-a-time investigation, contextual memory, and spoken prompt suggestions. |
-| **Quality of business recommendations** | **20%** | Grounded in mock numbers: inventory replenishment, SLA audit for cancellations, and sponsored ad re-activation. |
-| **AI implementation and workflow** | **20%** | Clean transient inline assistant config (no remote dashboard lock-in), dynamic prompt generator per seller, typed data layer. |
-| **Creativity and execution** | **10%** | Multi-business store switcher, interactive action item checklist, relative comparison bars, and "Copy Notes" functionality. |

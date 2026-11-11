@@ -4,3 +4,9 @@ dist
 .env.local
 *.local
 .DS_Store
+
+# Media & recordings
+*.mov
+*.mp4
+*.webm
+*.avi

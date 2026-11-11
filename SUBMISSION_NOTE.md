@@ -2,7 +2,6 @@
 
 **Role:** Snapdeal AI First Intern Practical Assignment  
 **Project:** Mini AI Voice Key Account Manager (Virtual KAM) with Multi-Business Support  
-**Format:** 1-Page Technical Overview & Architecture Document  
 
 ---
 
