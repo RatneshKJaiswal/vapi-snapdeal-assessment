@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Vapi from "@vapi-ai/web";
 import { getAssistantConfig } from "../services/vapiConfig";
-import type { TranscriptMessage, CallStatus } from "../types";
+import type { TranscriptMessage, CallStatus, SellerProfile } from "../types";
 
 const publicKey = import.meta.env.VITE_VAPI_PUBLIC_KEY as string | undefined;
 
@@ -25,9 +25,10 @@ export interface UseVapiReturn {
   messages: TranscriptMessage[];
   error: string | null;
   callDuration: number;
-  startCall: () => Promise<void>;
+  startCall: (seller?: SellerProfile) => Promise<void>;
   endCall: () => void;
   clearError: () => void;
+  clearMessages: () => void;
   isConfigured: boolean;
 }
 
@@ -144,7 +145,7 @@ export function useVapi(): UseVapiReturn {
     };
   }, [isConfigured, startTimer, stopTimer]);
 
-  const startCall = useCallback(async () => {
+  const startCall = useCallback(async (seller?: SellerProfile) => {
     if (!isConfigured) {
       setError("Vapi public key is not configured. Add VITE_VAPI_PUBLIC_KEY to your .env file.");
       return;
@@ -162,7 +163,7 @@ export function useVapi(): UseVapiReturn {
 
     try {
       const vapi = getVapi();
-      const config = getAssistantConfig();
+      const config = getAssistantConfig(seller);
       await vapi.start(config);
     } catch (err) {
       console.error("Failed to start call:", err);
@@ -204,6 +205,10 @@ export function useVapi(): UseVapiReturn {
     setError(null);
   }, []);
 
+  const clearMessages = useCallback(() => {
+    setMessages([]);
+  }, []);
+
   return {
     status,
     isSpeaking,
@@ -214,6 +219,7 @@ export function useVapi(): UseVapiReturn {
     startCall,
     endCall,
     clearError,
+    clearMessages,
     isConfigured,
   };
 }
